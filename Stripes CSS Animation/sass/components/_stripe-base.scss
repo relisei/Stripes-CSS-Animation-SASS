@@ -1,0 +1,76 @@
+$colorBlue:  #244F75;
+$colorSkyblue: #60BFBF;
+$colorPurple: #8C4B7E;
+$colorYellow:  #F8BB44;
+$colorRed: #F24B4B;
+$colorOffWhite: #f5f4f4;
+$fontSize: 3.5vw;
+
+body{
+    font-family: 'Lato', sans-serif;
+    
+    .stripes-container{
+
+        // stripe styling//
+        @mixin stripe ($values:1 1 20%,$bgc){
+            flex: $values; 
+            background: $bgc;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+                    -webkit-animation-fill-mode: both;
+                    animation-fill-mode: both; /* First&Last Keyframes get style value of initial&final state*/
+            -webkit-animation-duration: 1s;
+                    animation-duration: 1s;
+            -webkit-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1); 
+                    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1); /* entry stripe animation timimg in area */
+            
+            &:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: white;
+                opacity: 0.05;
+                -webkit-transform: skew(30deg) scaleY(1) translate(0, 0); 
+                        transform: skew(30deg) scaleY(1) translate(0, 0); /* transformation from initial state */
+                transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* hover transform transition */ 
+            }
+            /* Animation of before pseudo-elemement over hover */
+            &:hover:before {
+                -webkit-transform: skew(0deg) scale(3) translate(0, 0); /* :before > transformation to final state */
+                transform: skew(0deg) scale(3) translate(0, 0);
+                opacity: 0.1;
+            }
+        }
+        
+        .stripe-blue{
+            @include stripe(1 1 20%,$colorBlue)
+        }
+        .stripe-skyblue{
+            @include stripe(1 1 20%,$colorSkyblue)
+        }
+        .stripe-purple{
+            @include stripe(1 1 20%,$colorPurple)
+        }
+        .stripe-yellow{
+            @include stripe(1 1 20%,$colorYellow)
+        }
+        .stripe-red{
+            @include stripe(1 1 20%,$colorRed)
+        }
+        .stripe-title{ 
+            font-size: $fontSize;
+            color: $colorOffWhite;
+            font-weight: 300;
+            letter-spacing: 0.05rem;
+        }
+        .fa-heart{
+            font-size: 3.2vw;
+            margin-left: 0.4rem;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    .stripes-container{
+        width: 100vw;
+        display: flex;
+        flex-flow: row nowrap;
+        border-style: solid;
+        text-align: center;
+        min-height: 100vh;
+        cursor: pointer;
+        border-width: 0.1px;
+        border-color:lightgray;
+        position: absolute;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }      
+}

@@ -1,0 +1,55 @@
+/* Mixin animation styles */
+@mixin animation ($stripeName,$property,$delayValue){
+    -webkit-animation-name: $stripeName;
+        animation-name: $stripeName;
+    -webkit-transform: $property;
+    transform: $property; /* style-value set for animation-fill-mode:both from start */
+    -webkit-animation-delay: $delayValue; 
+          animation-delay: $delayValue; /* delay to final state */
+}
+
+.stripe-blue{  
+    @include animation(stripe1, translate3d(-100%, 0, 0), 0.1s);
+}
+.stripe-skyblue{
+    @include animation(stripe2, translate3d(0, 100%, 0), 0.2s);
+}
+.stripe-purple{
+    @include animation(stripe3, translate3d(0, -100%, 0), 0.3s);
+}
+.stripe-yellow{
+    @include animation(stripe4, translate3d(0, 100%, 0), 0.4s);
+}
+.stripe-red{
+    @include animation(stripe5, translate3d(100%, 0, 0), 0.5s);
+}
+
+/* Mixin @keyframe animation styles */
+@mixin A($stripeName, $transformAnimationInitialValue,$transformAnimationEndValue){
+    @keyframes #{$stripeName} {
+        0% {
+        -webkit-transform: #{$transformAnimationInitialValue};
+        transform: #{$transformAnimationInitialValue};
+        }
+        100% {
+        -webkit-transform: #{$transformAnimationEndValue}; 
+        transform: #{$transformAnimationEndValue}; /* style-value set for animation-fill-mode:both at end */
+        }
+    }
+    
+}
+.stripe-blue{
+    @include A(stripe1, translate3d(-100%, 0, 0), translate3d(0, 0, 0));
+}
+.stripe-skyblue{
+    @include A(stripe2, translate3d(0, 100%, 0), translate3d(0, 0, 0));
+}
+.stripe-purple{
+    @include A(stripe3, translate3d(0, -100%, 0), translate3d(0, 0, 0));
+}
+.stripe-yellow{
+    @include A(stripe4, translate3d(0, 100%, 0), translate3d(0, 0, 0));
+}
+.stripe-red{
+    @include A(stripe5, translate3d(100%, 0, 0), translate3d(0, 0, 0));
+}
